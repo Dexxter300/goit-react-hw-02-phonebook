@@ -13,43 +13,31 @@ export class App extends Component {
       { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
-    name: '',
+
     filter: '',
-    number: '',
   };
   filteredList = null;
 
-  handleSubmit = e => {
+  handleSubmit = (e, name, number) => {
     e.preventDefault();
     if (
-      this.state.contacts.filter(contact => contact.name === this.state.name)
-        .length !== 0
+      this.state.contacts.filter(
+        contact => contact.name.toLowerCase() === name.toLowerCase()
+      ).length !== 0
     ) {
-      alert(`${this.state.name} is already in your contacts`);
+      alert(`${name} is already in your contacts`);
       return;
     }
     this.setState({
       contacts: [
         ...this.state.contacts,
-        { name: this.state.name, number: this.state.number, id: nanoid() },
+        { name: name, number: number, id: nanoid() },
       ],
       filter: '',
       name: '',
       number: '',
     });
     e.target.reset();
-  };
-
-  handleNameChange = e => {
-    this.setState({
-      name: e.target.value,
-    });
-  };
-
-  handlePhoneChange = e => {
-    this.setState({
-      number: e.target.value,
-    });
   };
 
   handleFilter = e => {

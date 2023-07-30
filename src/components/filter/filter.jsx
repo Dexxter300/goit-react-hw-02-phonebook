@@ -9,7 +9,7 @@ export const Filter = ({ handleFilter }) => {
           className={css.filterInput}
           type="text"
           name="filter"
-          pattern="^[a-zA-Zа-яА-Я]+(([' \\-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          pattern="^^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="find contact"
           onChange={handleFilter}
         />
